@@ -1,0 +1,44 @@
+void quantizeBits(){
+    while(frontIsClear()){
+        checkOneLane(); 
+    }
+    checkOneLane();
+}
+
+void checkOneLane(){
+    turnLeft();
+    repeat(4){
+        if(beeperAhead()){
+            moveForward();
+        }   
+    }
+    if(!beeperAhead()){
+        turnAround();
+        if(onBeeper()){
+            pickBeeper();
+        }
+        while(beeperAhead()){
+            moveForward();
+            pickBeeper();
+        }
+    }
+    if(beeperAhead()){
+        repeat(5){
+            if(beeperAhead()){
+                moveForward();
+            }
+            if (!beeperAhead() && frontIsClear()){
+                moveForward();
+                dropBeeper();
+            }
+        }
+        turnAround();
+        while(beeperAhead()){
+            moveForward();
+        }
+    }
+    turnLeft();
+    if(frontIsClear()){
+        moveForward();
+    }
+}
