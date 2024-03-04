@@ -1,0 +1,15 @@
+void findShelters(){
+    repeat(4){ // 4 Seiten
+        if (frontIsClear() && !beeperAhead()){ // wenn vorne frei dann vorwärts
+            moveForward();
+            if (rightIsClear() || frontIsClear() || leftIsClear()){ // wenn nicht in Höhle, Drop
+                dropBeeper();
+                findShelters();
+            }
+            turnAround(); // wenn in Höhle umdrehen und zurück
+            moveForward();
+            turnAround();
+        }
+        turnLeft(); // um Endlosschleife zu verhindern repeat 4
+    }
+}
