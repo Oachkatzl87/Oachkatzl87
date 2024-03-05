@@ -1,0 +1,64 @@
+void addSmart(){
+    repeat(8){
+        if (rightIsClear()){
+            checkLine();
+        }
+    }
+}
+
+void checkLine(){
+    if (onBeeper() && beeperAhead()){
+        turnRight();
+        moveForward();
+        turnLeft();
+        addExtra();
+    }
+    else if (!onBeeper() && !beeperAhead()){
+        turnRight();
+        moveForward();
+        turnLeft();
+    }
+    else {
+        moveForward();
+        moveForward();
+        dropBeeper();
+        turnAround();
+        moveForward();
+        moveForward();
+        turnLeft();
+        moveForward();
+        turnLeft();
+    }
+}
+
+void addExtra(){
+    if (onBeeper() && beeperAhead()){
+        moveForward();
+        moveForward();
+        dropBeeper();
+        turnAround();
+        moveForward();
+        moveForward();
+        turnLeft();
+        moveForward();
+        turnLeft();
+        addExtra();
+    }
+    else if (!onBeeper() && !beeperAhead() && rightIsClear()){
+        moveForward();
+        moveForward();
+        dropBeeper();
+        turnAround();
+        moveForward();
+        moveForward();
+        turnLeft();
+        moveForward();
+        turnLeft();
+    }
+    else if (rightIsClear()){
+        turnRight();
+        moveForward();
+        turnLeft();
+        addExtra();
+    }
+}
